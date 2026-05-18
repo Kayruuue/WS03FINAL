@@ -5,32 +5,44 @@ $title2 = "Blog";
 $description = 'John Christopher Depp II is an American actor, producer, and musician known for his portrayals of eccentric, larger-than-life characters.';
 $name = "Johnny Depp";
 
-$skills = ['Acting', 'Character Transformation', 'Versatility', 'Musicianship', 'Direction & Production','Academy Awards Nominations'];
+$skills = ['Acting', 'Character Transformation', 'Versatility', 'Musicianship', 'Direction & Production', 'Academy Awards Nominations'];
 
 $posts = [
     [
-        'date'    => 'Jan 26, 2026',
-        'title'   => 'Day Drinker Filming Update',
-        'excerpt' => 'Johnny is currently filming the action-thriller "Day Drinker" alongside Penelope Cruz. This marks his first major studio lead role in nearly a decade.',
-        'label'   => 'MOVIES'
+        'pagetitle' => 'Day Drinker Filming Update | AjinBlog',
+        'date'      => 'Jan 26, 2026',
+        'title'     => 'Day Drinker Filming Update',
+        'author'    => 'Ajin',
+        'excerpt'   => 'Johnny is currently filming the action-thriller "Day Drinker" alongside Penelope Cruz. This marks his first major studio lead role in nearly a decade.',
+        'body'      => 'Johnny Depp is currently filming "Day Drinker" alongside Penelope Cruz, a project that signals a major return to leading studio roles. The film has already generated strong interest because of the pairing and the momentum around Depp\'s renewed screen presence.',
+        'label'     => 'MOVIES'
     ],
     [
-        'date'    => 'Jan 10, 2026',
-        'title'   => 'Ebenezer: A Christmas Carol',
-        'excerpt' => 'Paramount has officially slated Ti West’s "Ebenezer" for a November 13, 2026 release, starring Depp as a darker, reimagined Scrooge.',
-        'label'   => 'UPCOMING'
+        'pagetitle' => 'Ebenezer: A Christmas Carol | AjinBlog',
+        'date'      => 'Jan 10, 2026',
+        'title'     => 'Ebenezer: A Christmas Carol',
+        'author'    => 'Ajin',
+        'excerpt'   => 'Paramount has officially slated Ti West\'s "Ebenezer" for a November 13, 2026 release, starring Depp as a darker, reimagined Scrooge.',
+        'body'      => 'This reimagining of Scrooge gives Depp the chance to step into a darker literary role with a modern cinematic edge. With Ti West directing, the adaptation stands out as one of the more intriguing upcoming projects connected to Depp\'s comeback period.',
+        'label'     => 'UPCOMING'
     ],
     [
-        'date'    => 'Dec 11, 2025',
-        'title'   => 'The Master and Margarita',
-        'excerpt' => 'Depp’s production company IN.2 Film has greenlit the first English adaptation of the Russian classic; production begins late 2026.',
-        'label'   => 'PRODUCTION'
+        'pagetitle' => 'The Master and Margarita | AjinBlog',
+        'date'      => 'Dec 11, 2025',
+        'title'     => 'The Master and Margarita',
+        'author'    => 'Ajin',
+        'excerpt'   => 'Depp\'s production company IN.2 Film has greenlit the first English adaptation of the Russian classic; production begins late 2026.',
+        'body'      => 'Through IN.2 Film, Depp continues to expand his influence behind the camera by backing ambitious literary material. The first English adaptation of this classic adds a more artistic and international dimension to the overall direction of his recent work.',
+        'label'     => 'PRODUCTION'
     ],
     [
-        'date'    => 'Nov 07, 2025',
-        'title'   => 'Modi U.S. Premiere',
-        'excerpt' => 'Johnny’s latest directorial effort, "Modi: Three Days on the Wings of Madness," starring Al Pacino, has finally arrived in North American theaters.',
-        'label'   => 'DIRECTOR'
+        'pagetitle' => 'Modi U.S. Premiere | AjinBlog',
+        'date'      => 'Nov 07, 2025',
+        'title'     => 'Modi U.S. Premiere',
+        'author'    => 'Ajin',
+        'excerpt'   => 'Johnny\'s latest directorial effort, "Modi: Three Days on the Wings of Madness," starring Al Pacino, has finally arrived in North American theaters.',
+        'body'      => 'The North American release of "Modi" highlights Depp\'s continued evolution as a director. Rather than relying only on acting roles, he is shaping a broader creative identity through projects that focus on historical figures, style, and performance-driven storytelling.',
+        'label'     => 'DIRECTOR'
     ]
 ];
 
@@ -82,8 +94,8 @@ $gallery_images = [
 
             <div class="w-full md:w-1/3">
                 <h1 class="text-7xl md:text-8xl lg:text-9xl font-black leading-[0.8] tracking-tighter text-zinc-900">
-                    <?php 
-                        echo str_replace(' ', '<br>', $name); 
+                    <?php
+                        echo str_replace(' ', '<br>', $name);
                     ?>
                 </h1>
             </div>
@@ -142,7 +154,12 @@ $gallery_images = [
                     <h3 class="text-2xl font-bold mt-2 text-zinc-900 group-hover:text-zinc-600 transition">
                         <?= $post['title'] ?>
                     </h3>
+                    <p class="text-sm uppercase tracking-[0.2em] text-zinc-400 mt-3">
+                        By <?= $post['author'] ?>
+                    </p>
                     <p class="text-zinc-500 mt-4 leading-relaxed"><?= $post['excerpt'] ?></p>
+                    <p class="text-zinc-600 mt-4 leading-relaxed"><?= $post['body'] ?></p>
+                    <p class="text-xs text-zinc-300 font-mono mt-6"><?= $post['pagetitle'] ?></p>
                 </div>
                 <?php endforeach; ?>
 
