@@ -1,8 +1,7 @@
 /vendor
-/node_modules/config/db.php
+/node_modules
+/config/db.php
 .env
 .vscode
-.DS_Store
-
-
-Thumbs.db
+.Thumbs.db
+Desktop.ini

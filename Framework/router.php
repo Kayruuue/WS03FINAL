@@ -1,88 +1,83 @@
 <?php
+    namespace Framework;
 
-namespace Framework;
+    use App\Controllers\ErrorController;
+    use Framework\Middleware\Authorize;
 
-class Router
-{
-    protected $routes = [];
+    class Router {
+        protected $routes = [];
 
-    public function registerRoute($method, $uri, $controller)
-    {
-        $this->routes[] = [
-            'method' => strtoupper($method),
-            'uri' => $uri,
-            'controller' => $controller,
-        ];
-    }
-
-    public function get($uri, $controller)
-    {
-        $this->registerRoute('GET', $uri, $controller);
-    }
-
-    public function post($uri, $controller)
-    {
-        $this->registerRoute('POST', $uri, $controller);
-    }
-
-    public function put($uri, $controller)
-    {
-        $this->registerRoute('PUT', $uri, $controller);
-    }
-
-    public function delete($uri, $controller)
-    {
-        $this->registerRoute('DELETE', $uri, $controller);
-    }
-
-    public function error($httpCode = 404)
-    {
-        http_response_code($httpCode);
-        loadView("error/{$httpCode}");
-        exit;
-    }
-
-    public function route($uri, $method)
-    {
-        if ($method === 'POST' && isset($_POST['_method'])) {
-            $method = strtoupper($_POST['_method']);
+        public function registerRoute($method, $uri, $controller, $middleware = []) {
+            $this->routes[] = [
+                'method' => $method,
+                'uri' => $uri,
+                'controller' => $controller,
+                'middleware' => $middleware
+            ];
         }
 
-        $uriSegments = explode('/', trim($uri, '/'));
-
-        foreach ($this->routes as $route) {
-            $routeSegments = explode('/', trim($route['uri'], '/'));
-            $params = [];
-
-            if (count($uriSegments) !== count($routeSegments)) {
-                continue;
-            }
-
-            if (strtoupper($method) !== $route['method']) {
-                continue;
-            }
-
-            $matched = true;
-
-            foreach ($routeSegments as $index => $segment) {
-                if (preg_match('/^\{(.+)\}$/', $segment, $matches)) {
-                    $params[$matches[1]] = $uriSegments[$index];
-                    continue;
-                }
-
-                if ($segment !== $uriSegments[$index]) {
-                    $matched = false;
-                    break;
-                }
-            }
-
-            if ($matched) {
-                $GLOBALS['routeParams'] = $params;
-                require basePath($route['controller']);
-                return;
-            }
+        public function get($uri, $controller, $middleware = []) {
+            $this->registerRoute('GET', $uri, $controller, $middleware);
         }
 
-        $this->error(404);
+        public function post($uri, $controller, $middleware = []) {
+            $this->registerRoute('POST', $uri, $controller, $middleware);
+        }
+
+        public function put($uri, $controller, $middleware = []) {
+            $this->registerRoute('PUT', $uri, $controller, $middleware);
+        }
+
+        public function delete($uri, $controller, $middleware = []) {
+            $this->registerRoute('DELETE', $uri, $controller, $middleware);
+        }
+
+        public function route($uri, $method) {
+            // Check for method override
+            if ($method === 'POST' && isset($_POST['_method'])) {
+                $method = strtoupper($_POST['_method']);
+            }
+
+            $uriSegments = explode('/', trim($uri, '/'));
+
+            foreach ($this->routes as $route) {
+                $routeSegments = explode('/', trim($route['uri'], '/'));
+
+                $match = true;
+                $params = [];
+
+                if (count($uriSegments) === count($routeSegments)
+                    && strtoupper($method) === strtoupper($route['method'])) {
+
+                    for ($i = 0; $i < count($routeSegments); $i++) {
+                        if ($routeSegments[$i] !== $uriSegments[$i]
+                            && !preg_match('/\{(.+?)\}/', $routeSegments[$i])) {
+                            $match = false;
+                            break;
+                        }
+
+                        if (preg_match('/\{(.+?)\}/', $routeSegments[$i], $matches)) {
+                            $params[$matches[1]] = $uriSegments[$i];
+                        }
+                    }
+
+                    if ($match) {
+                        // Run middleware
+                        foreach ($route['middleware'] as $middleware) {
+                            $authorize = new Authorize();
+                            $authorize->handle($middleware);
+                        }
+
+                        list($controller, $controllerMethod) = explode('@', $route['controller']);
+                        $controllerClass = 'App\\Controllers\\' . $controller;
+                        $controllerInstance = new $controllerClass();
+                        $controllerInstance->$controllerMethod($params);
+                        return;
+                    }
+                }
+            }
+
+            ErrorController::notFound();
+        }
     }
-}
+?>
