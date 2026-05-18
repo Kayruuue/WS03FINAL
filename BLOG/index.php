@@ -47,10 +47,26 @@ $posts = [
 ];
 
 $gallery_images = [
-    "assets/images/depp1.png",
-    "assets/images/depp2.png",
-    "assets/images/depp3.png",
-    "assets/images/depp4.png"
+    [
+        'src' => 'assets/images/depp1.png',
+        'alt' => 'Young Johnny Depp in a classic black tuxedo at a formal event',
+        'description' => 'A formal red-carpet style portrait showing a younger Johnny Depp in a black tuxedo, capturing the polished early-Hollywood image that helped define his rise in the 1990s.'
+    ],
+    [
+        'src' => 'assets/images/depp2.png',
+        'alt' => 'Johnny Depp collage featuring magazines, film roles, and media imagery',
+        'description' => 'A stylized collage that mixes magazine covers, iconic roles, and pop-culture references to show how Johnny Depp became both a movie star and a media fascination.'
+    ],
+    [
+        'src' => 'assets/images/depp3.png',
+        'alt' => 'Johnny Depp collage featuring different roles and eras of his career',
+        'description' => 'A career-spanning montage highlighting Depp\'s many screen identities, from eccentric dramatic characters to the instantly recognizable Captain Jack Sparrow era.'
+    ],
+    [
+        'src' => 'assets/images/depp4.png',
+        'alt' => 'Johnny Depp in a black tuxedo and round glasses at a formal gala backdrop',
+        'description' => 'A modern formal-event portrait of Johnny Depp in a tuxedo and tinted glasses, emphasizing the refined, fashion-forward persona he often brings to public appearances.'
+    ]
 ];
 ?>
 
@@ -172,8 +188,19 @@ $gallery_images = [
             <h2 class="text-4xl font-bold mb-12 text-zinc-900">Life in Frames</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <?php foreach($gallery_images as $img): ?>
-                <div class="h-64 bg-zinc-200 rounded-xl overflow-hidden ring-1 ring-zinc-200 shadow-sm">
-                    <img src="<?= $img ?>" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                <div class="group relative h-64 bg-zinc-200 rounded-xl overflow-hidden ring-1 ring-zinc-200 shadow-sm">
+                    <img
+                        src="<?= $img['src'] ?>"
+                        alt="<?= $img['alt'] ?>"
+                        title="<?= $img['description'] ?>"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent opacity-0 transition duration-300 group-hover:opacity-100"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-4 opacity-0 translate-y-3 transition duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                        <p class="text-white text-sm leading-relaxed">
+                            <?= $img['description'] ?>
+                        </p>
+                    </div>
                 </div>
                 <?php endforeach; ?>
             </div>
