@@ -1,8 +1,8 @@
 <?php loadPartial('head'); ?>
 <?php loadPartial('navbar'); ?>
 
-<section class="flex justify-center items-center mt-20">
-  <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+<section class="flex justify-center items-center mt-20 auth-spacing">
+  <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md auth-form-shell">
     <h2 class="text-4xl text-center font-bold mb-4">Register</h2>
 
     <?php loadPartial('errors', ['errors' => $errors ?? []]); ?>
@@ -66,5 +66,3 @@
     </form>
   </div>
 </section>
-
-<?php loadPartial('footer'); ?>
