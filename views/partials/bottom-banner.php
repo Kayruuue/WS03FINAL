@@ -1,10 +1,10 @@
 <!-- Bottom Banner -->
-<section class="container mx-auto my-6">
+<section class="container mx-auto my-5">
     <div
-        class="bg-blue-800 text-white rounded p-4 flex items-center justify-between">
+        class="bg-blue-800 text-white rounded p-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
             <h1 class="text-xl font-semibold">Looking to hire?</h1>
-            <p class="text-gray-200 text-lg mt-2">
+            <p class="text-gray-200 text-lg mt-1.5">
                 Post your job listing now and find the perfect candidate.
             </p>
         </div>

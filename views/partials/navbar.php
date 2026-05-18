@@ -1,10 +1,10 @@
 <!-- Nav -->
 <header class="bg-blue-900 text-white p-4">
-    <div class="container mx-auto flex justify-between items-center">
+    <div class="container mx-auto flex flex-col gap-3 md:flex-row md:justify-between md:items-center">
         <h1 class="text-3xl font-semibold">
-            <a href="<?= appUrl() ?>">Jobseeker</a>
+            <a href="<?= appUrl() ?>">Prosple</a>
         </h1>
-        <nav class="space-x-4">
+        <nav class="flex flex-wrap items-center gap-4">
             <a href="<?= appUrl('login') ?>" class="text-white hover:underline">Login</a>
             <a href="<?= appUrl('register') ?>" class="text-white hover:underline">Register</a>
             <a
