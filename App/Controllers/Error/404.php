@@ -1,3 +1,3 @@
-<?php 
-    loadView('Error/404');
+<?php
+    \App\Controllers\ErrorController::notFound();
 ?>

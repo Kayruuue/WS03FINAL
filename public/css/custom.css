@@ -10,8 +10,8 @@
   --color-tag-text: #4f7de8;
   --color-footer: #1d3154;
   --showcase-overlay: rgba(255, 255, 255, 0.45);
-  --border-radius: 8px;
-  --control-radius: 0.25rem;
+  --border-radius: 0.5rem;
+  --control-radius: 0.5rem;
   --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   --card-shadow-hover: 0 10px 24px rgba(29, 49, 84, 0.12);
   --soft-border: rgba(79, 125, 232, 0.14);
@@ -141,7 +141,7 @@ footer,
 }
 
 .showcase {
-  min-height: 19rem;
+  min-height: 24rem;
 }
 
 .showcase .container,
@@ -173,6 +173,7 @@ section .container {
 .site-header .brand {
   color: var(--color-heading) !important;
   letter-spacing: -0.03em;
+  font-size: 2.1rem;
 }
 
 .site-header .nav-actions a:not(.bg-yellow-500),
@@ -190,6 +191,30 @@ section .container {
   padding-bottom: 1rem;
 }
 
+.site-header .container > .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-header .nav-actions {
+  margin-left: auto;
+}
+
+.site-header .nav-actions > .flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.site-header .nav-actions span,
+.site-header .nav-actions a,
+.site-header .nav-actions button {
+  font-size: 1rem;
+}
+
 .showcase form input {
   border-color: var(--soft-border) !important;
   background-color: rgba(255, 255, 255, 0.96);
@@ -197,4 +222,299 @@ section .container {
 
 .showcase form {
   max-width: 100%;
+}
+
+.site-header .brand:hover,
+.site-header .nav-actions a:hover,
+.site-header .nav-actions button:hover {
+  opacity: 0.85;
+}
+
+.showcase-panel {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 3.5rem 1rem 2rem;
+  background: transparent;
+  border: 0;
+  border-radius: var(--border-radius);
+  box-shadow: none;
+}
+
+.showcase-copy {
+  max-width: 34rem;
+  margin: 0 auto 1.1rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.6;
+}
+
+.showcase form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.showcase form input {
+  min-width: 16rem;
+  box-shadow: none;
+  border: 1px solid rgba(79, 125, 232, 0.1) !important;
+  border-radius: 0.35rem !important;
+  padding: 0.85rem 1rem !important;
+  font-size: 0.98rem;
+}
+
+.showcase form button,
+.site-header .nav-actions .bg-yellow-500,
+.bottom-banner-cta {
+  box-shadow: none;
+}
+
+.showcase form button {
+  border-radius: 0.35rem !important;
+  padding: 0.85rem 1.2rem !important;
+  font-weight: 600;
+}
+
+.top-banner-panel,
+.bottom-banner-panel,
+.section-shell {
+  background: transparent;
+  border: 0;
+  border-radius: var(--border-radius);
+  box-shadow: none;
+}
+
+.top-banner-panel {
+  padding: 1rem 0 0.5rem;
+}
+
+.top-banner-panel p {
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-shell {
+  padding: 0;
+}
+
+.home-listings-shell {
+  max-width: 1620px;
+}
+
+.section-heading {
+  letter-spacing: -0.02em;
+  max-width: 82rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2.7rem;
+  color: #546f9c !important;
+}
+
+.job-grid {
+  gap: 1.25rem;
+  max-width: 82rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.job-card {
+  overflow: hidden;
+}
+
+.job-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-height: 100%;
+}
+
+.job-title {
+  color: var(--color-heading) !important;
+  line-height: 1.3;
+  font-size: 1.25rem;
+}
+
+.job-description {
+  line-height: 1.7;
+}
+
+.job-meta {
+  margin: 0;
+  padding: 1rem;
+  background-color: var(--color-page-bg) !important;
+}
+
+.job-meta li:last-child {
+  margin-bottom: 0;
+}
+
+.job-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  background: rgba(79, 125, 232, 0.10);
+  color: var(--color-link);
+  font-size: 0.75rem;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.job-tags {
+  color: var(--color-link);
+  font-weight: 600;
+}
+
+.show-all-link {
+  color: var(--color-heading) !important;
+  font-weight: 700;
+}
+
+.show-all-link:hover {
+  color: var(--color-link) !important;
+}
+
+.bottom-banner-panel {
+  padding: 1rem;
+  background-color: #1e40af;
+  border: 0;
+  box-shadow: none;
+}
+
+.bottom-banner-copy {
+  color: #e5e7eb !important;
+}
+
+.listing-show-shell {
+  max-width: 1620px;
+}
+
+.listing-show-card {
+  max-width: 82rem;
+  margin: 0 auto;
+  padding: 2rem 2.2rem !important;
+}
+
+.listing-show-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.listing-back-link {
+  font-size: 1rem;
+  color: var(--color-link) !important;
+}
+
+.listing-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.listing-action-btn {
+  min-width: 4.5rem;
+  text-align: center;
+}
+
+.listing-action-edit {
+  background-color: var(--color-accent) !important;
+  border-color: transparent !important;
+}
+
+.listing-action-delete {
+  background-color: #e35d6a !important;
+  border-color: transparent !important;
+}
+
+.listing-show-intro h2 {
+  font-size: 2.1rem;
+  margin-bottom: 0.9rem !important;
+}
+
+.listing-show-intro p {
+  max-width: 56rem;
+}
+
+.listing-meta-panel {
+  padding: 1.35rem 1.2rem !important;
+  margin-top: 0.75rem !important;
+}
+
+.listing-meta-panel strong {
+  color: #4f6285;
+}
+
+.listing-detail-heading {
+  max-width: 82rem;
+  margin: 2.6rem auto 1rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.listing-detail-panel {
+  max-width: 82rem;
+  margin: 0 auto;
+  min-height: 9rem;
+}
+
+.listing-detail-block + .listing-detail-block {
+  margin-top: 1.25rem;
+}
+
+.listing-detail-block strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #4f6285;
+}
+
+@media (max-width: 767px) {
+  .site-header .container > .flex,
+  .site-header .nav-actions > .flex {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-header .nav-actions {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .showcase-panel {
+    padding: 2rem 0.5rem 1rem;
+  }
+
+  .section-shell {
+    padding: 0;
+  }
+
+  .showcase form {
+    display: block;
+  }
+
+  .showcase form input,
+  .showcase form button {
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 0.6rem;
+  }
+
+  .listing-show-header {
+    flex-direction: column;
+    margin-bottom: 2rem;
+  }
+
+  .listing-actions {
+    width: 100%;
+  }
+
+  .listing-action-btn,
+  .listing-actions form {
+    width: 100%;
+  }
 }

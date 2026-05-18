@@ -7,15 +7,41 @@
 ?>
 
 <section>
-  <div class="container mx-auto p-4 mt-4">
+  <div class="container listing-show-shell mx-auto p-4 mt-4">
 
     <?php loadPartial('message'); ?>
 
-    <div class="bg-white rounded-lg shadow-md p-8">
-      <h2 class="text-3xl font-bold mb-4"><?= $listing->title ?></h2>
-      <p class="text-gray-700 text-lg mb-4"><?= $listing->description ?></p>
+    <div class="listing-show-card bg-white rounded-lg shadow-md p-8">
+      <div class="listing-show-header">
+        <a href="/listings" class="listing-back-link">
+          <i class="fa fa-arrow-circle-left"></i> Back To Listings
+        </a>
 
-      <ul class="my-4 bg-gray-100 p-8 rounded">
+        <?php if (Authorization::isOwner($listing->user_id)) : ?>
+          <div class="listing-actions">
+            <a href="/listings/edit/<?= $listing->id ?>"
+              class="listing-action-btn listing-action-edit px-5 py-2.5 shadow-sm rounded border text-base font-medium text-white bg-yellow-500 hover:bg-yellow-600">
+              Edit
+            </a>
+
+            <form method="POST" action="/listings/<?= $listing->id ?>">
+              <input type="hidden" name="_method" value="DELETE">
+              <button type="submit"
+                class="listing-action-btn listing-action-delete px-5 py-2.5 shadow-sm rounded border text-base font-medium text-white bg-red-500 hover:bg-red-600"
+                onclick="return confirm('Are you sure you want to delete this listing?')">
+                Delete
+              </button>
+            </form>
+          </div>
+        <?php endif; ?>
+      </div>
+
+      <div class="listing-show-intro">
+        <h2 class="text-3xl font-bold mb-4"><?= $listing->title ?></h2>
+        <p class="text-gray-700 text-lg mb-4"><?= $listing->description ?></p>
+      </div>
+
+      <ul class="listing-meta-panel my-4 bg-gray-100 p-8 rounded">
         <li class="mb-2">
           <strong>Salary:</strong> <?= formatSalary($listing->salary) ?>
         </li>
@@ -27,20 +53,9 @@
           <strong>Tags:</strong> <?= $listing->tags ?>
         </li>
         <?php endif; ?>
-        <?php if (!empty($listing->requirements)) : ?>
+        <?php if (!empty($listing->company)) : ?>
         <li class="mb-2">
-          <strong>Requirements:</strong> <?= $listing->requirements ?>
-        </li>
-        <?php endif; ?>
-        <?php if (!empty($listing->benefits)) : ?>
-        <li class="mb-2">
-          <strong>Benefits:</strong> <?= $listing->benefits ?>
-        </li>
-        <?php endif; ?>
-        <?php if (!empty($listing->email)) : ?>
-        <li class="mb-2">
-          <strong>Email:</strong>
-          <a href="mailto:<?= $listing->email ?>"><?= $listing->email ?></a>
+          <strong>Company:</strong> <?= $listing->company ?>
         </li>
         <?php endif; ?>
         <?php if (!empty($listing->phone)) : ?>
@@ -49,29 +64,31 @@
         </li>
         <?php endif; ?>
       </ul>
+    </div>
 
-      <div class="flex gap-4 mt-4">
-        <a href="/listings"
-          class="px-5 py-2.5 shadow-sm rounded border text-base font-medium text-indigo-700 bg-indigo-100 hover:bg-indigo-200">
-          Back to Listings
-        </a>
+    <h3 class="listing-detail-heading">Job Details</h3>
 
-        <?php if (Authorization::isOwner($listing->user_id)) : ?>
-          <a href="/listings/edit/<?= $listing->id ?>"
-            class="px-5 py-2.5 shadow-sm rounded border text-base font-medium text-white bg-yellow-500 hover:bg-yellow-600">
-            Edit
-          </a>
+    <div class="listing-detail-panel bg-white rounded-lg shadow-md p-8">
+      <?php if (!empty($listing->requirements)) : ?>
+        <div class="listing-detail-block">
+          <strong>Requirements:</strong>
+          <p><?= $listing->requirements ?></p>
+        </div>
+      <?php endif; ?>
 
-          <form method="POST" action="/listings/<?= $listing->id ?>">
-            <input type="hidden" name="_method" value="DELETE">
-            <button type="submit"
-              class="px-5 py-2.5 shadow-sm rounded border text-base font-medium text-white bg-red-500 hover:bg-red-600"
-              onclick="return confirm('Are you sure you want to delete this listing?')">
-              Delete
-            </button>
-          </form>
-        <?php endif; ?>
-      </div>
+      <?php if (!empty($listing->benefits)) : ?>
+        <div class="listing-detail-block">
+          <strong>Benefits:</strong>
+          <p><?= $listing->benefits ?></p>
+        </div>
+      <?php endif; ?>
+
+      <?php if (!empty($listing->email)) : ?>
+        <div class="listing-detail-block">
+          <strong>Email:</strong>
+          <p><a href="mailto:<?= $listing->email ?>"><?= $listing->email ?></a></p>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 </section>

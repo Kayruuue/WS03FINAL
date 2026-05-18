@@ -10,10 +10,10 @@
         <?php if (Session::has('user')) : ?>
           <div class="flex flex-wrap items-center gap-4">
             <span class="text-white">Welcome, <?= Session::get('user')['name'] ?></span>
-            <a href="/listings/create" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">Post a Job</a>
             <form method="POST" action="/logout" style="display:inline">
               <button type="submit" class="text-white hover:underline">Logout</button>
             </form>
+            <a href="/listings/create" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded"><i class="fa fa-edit"></i> Post a Job</a>
           </div>
         <?php else : ?>
           <div class="flex flex-wrap items-center gap-4">
