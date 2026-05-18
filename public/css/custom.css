@@ -422,21 +422,22 @@ section .container {
 }
 
 .create-listing-title {
-  font-size: 3rem;
+  font-size: 2.35rem;
   color: var(--color-heading) !important;
-  margin-bottom: 1rem !important;
+  margin-bottom: 0.85rem !important;
 }
 
 .create-listing-subtitle {
   color: var(--color-heading) !important;
-  font-size: 2rem;
-  margin-bottom: 1.6rem !important;
+  font-size: 1.2rem;
+  margin-bottom: 1.1rem !important;
+  letter-spacing: 0.01em;
 }
 
 .create-listing-input {
-  min-height: 3.2rem;
-  padding: 0.9rem 1.2rem !important;
-  font-size: 0.98rem;
+  min-height: 3rem;
+  padding: 0.82rem 1rem !important;
+  font-size: 0.95rem;
   border-radius: 0.35rem !important;
 }
 
@@ -444,14 +445,22 @@ section .container {
   min-height: 4.9rem;
 }
 
+.create-listing-card label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #59719b !important;
+  letter-spacing: 0.01em;
+}
+
 .create-listing-actions {
-  margin-top: 2rem;
+  margin-top: 1.7rem;
 }
 
 .create-listing-save,
 .create-listing-cancel {
   display: block;
   width: 100%;
+  box-sizing: border-box;
   padding: 0.95rem 1.2rem;
   border-radius: 0.35rem !important;
   font-size: 1rem;
@@ -648,10 +657,10 @@ section .container {
   }
 
   .create-listing-title {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
 
   .create-listing-subtitle {
-    font-size: 1.7rem;
+    font-size: 1.05rem;
   }
 }
