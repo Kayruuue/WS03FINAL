@@ -2,7 +2,7 @@
     return [
         'host' => 'localhost',
         'port' => '3306',
-        'dbname' => 'workfinder',
+        'dbname' => 'jobseeker',
         'username' => 'root',
         'password' => '',   
     ];
