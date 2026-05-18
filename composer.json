@@ -1,0 +1,17 @@
+{
+    "name": "lushvalera/ws03-php",
+    "description": "Job Listing PHP Project",
+    "authors": [
+        {
+            "name": "Lush Cielo Valera",
+            "email": "lushvalera051527@email.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "Framework/",
+            "Framework\\Middleware\\": "Framework/Middleware/",
+            "App\\": "app/"
+        }
+    }
+}
