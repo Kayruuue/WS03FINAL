@@ -5,7 +5,7 @@
 <header class="site-header">
   <div class="container mx-auto p-5">
     <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between py-4">
-      <a href="/" class="brand text-white text-4xl font-bold">Prosple</a>
+      <a href="/" class="brand text-white text-4xl font-bold">Jobseeker</a>
       <div class="nav-actions">
         <?php if (Session::has('user')) : ?>
           <div class="flex flex-wrap items-center gap-4">

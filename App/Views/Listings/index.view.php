@@ -3,7 +3,7 @@
 <?php loadPartial('topBanner'); ?>
 
 <section>
-  <div class="container mx-auto p-4 mt-4">
+  <div class="container listings-index-shell mx-auto p-4 mt-4">
 
     <?php loadPartial('message'); ?>
 
